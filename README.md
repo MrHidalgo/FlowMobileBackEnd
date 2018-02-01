@@ -10,3 +10,19 @@
       ├─ gulpfile.js 
       ├─ README.MD 
       └─ server.js
+      
+#### Installation:
+
+Please make sure latest Node 6 LTS and NPM 3+ are installed.
+
+Then, install packages:
+
+    $ npm i
+    
+#### Versions
+
+#### Bugs and Issues
+
+#### Contributing
+
+#### License
