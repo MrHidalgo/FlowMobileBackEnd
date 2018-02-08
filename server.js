@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 // Routes
 // =======================
 app.get('/', (req, res) => {
-    res.send('Hello! The API is at http://localhost:' + port + '/api');
+    res.send('Ok! Mobile Application - Flow System');
 });
 
 
@@ -40,14 +40,3 @@ app.get('/', (req, res) => {
 // Start the server
 // =======================
 app.listen(port);
-
-
-
-// const http = require('http');
-//
-// http.createServer(function (req, res) {
-//
-//     res.writeHead(200, { 'Content-Type': 'text/html' });
-//     res.end('Hello Ionic! To beat shit out someone');
-//
-// }).listen(process.env.PORT || 8080);
