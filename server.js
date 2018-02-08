@@ -28,19 +28,18 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-
 // =======================
 // Routes
 // =======================
-// apiRoutes.get('/', (req, res) => {
-//     res.send('Welcome to the coolest API at http://.../api!');
+apiRoutes.get('/', (req, res) => {
+    res.send('Welcome to the coolest API at http://sitename/api!');
+});
+// apiRoutes.post('/login', (req, res) => {
+//     console.log(`req: ${req.body}`);
 // });
 
-apiRoutes.post('/login', (req, res) => {
-    console.log(`req: ${req.body}`);
-});
+app.use('/', apiRoutes);
 
-app.use('/api', apiRoutes);
 
 // =======================
 // Start the server
