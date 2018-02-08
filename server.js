@@ -3,6 +3,7 @@
 // =======================
 const express = require('express');
 const app = express();
+const apiRoutes = express.Router();
 
 const bodyParser = require('body-parser');
 
@@ -31,10 +32,15 @@ app.use(bodyParser.json());
 // =======================
 // Routes
 // =======================
-app.get('/', (req, res) => {
-    res.send('Ok! Mobile Application - Flow System');
+apiRoutes.get('/', (req, res) => {
+    res.send('Welcome to the coolest API at http://.../api!');
 });
 
+apiRoutes.post('/login', (req, res) => {
+    console.log(`req: ${req.body}`);
+});
+
+app.use('/api', apiRoutes);
 
 // =======================
 // Start the server
