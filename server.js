@@ -32,9 +32,9 @@ app.use(bodyParser.json());
 // =======================
 // Routes
 // =======================
-apiRoutes.get('/', (req, res) => {
-    res.send('Welcome to the coolest API at http://.../api!');
-});
+// apiRoutes.get('/', (req, res) => {
+//     res.send('Welcome to the coolest API at http://.../api!');
+// });
 
 apiRoutes.post('/login', (req, res) => {
     console.log(`req: ${req.body}`);
