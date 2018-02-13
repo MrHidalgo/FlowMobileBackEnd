@@ -1,3 +1,4 @@
 module.exports = {
-    'secret' : 'flowsystemmobileapplication'
+    'PORT'      : 8080,
+    'SECRET'    : 'flowsystemmobileapplication'
 };
