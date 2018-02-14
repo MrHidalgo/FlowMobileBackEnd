@@ -14,7 +14,7 @@ const app           = express();
  *
  * @description Used to create, sign, and verify tokens
  */
-const port = process.env.PORT || config.PORT;
+const port = process.env.PORT || 8080;
 
 
 /**
@@ -53,71 +53,72 @@ app.get('/', (req, res) => {
 const apiRoutes     = express.Router();
 
 
-// apiRoutes.get('/auth', (req, res) => {
-//     res.send('Auth API...');
-// });
-// apiRoutes.get('/profile', (req, res) => {
-//     res.send('Profile API...');
-// });
-// apiRoutes.get('/task', (req, res) => {
-//     res.send('Task API...');
-// });
-// apiRoutes.get('/contacts', (req, res) => {
-//     res.send('Contacts API...');
-// });
-// apiRoutes.get('/hours', (req, res) => {
-//     res.send('Hours API...');
-// });
-// apiRoutes.get('/setting', (req, res) => {
-//     res.send('Setting API...');
-// });
+apiRoutes.get('/auth', (req, res) => {
+    res.send('Auth API...');
+});
+apiRoutes.get('/profile', (req, res) => {
+    res.send('Profile API...');
+});
+apiRoutes.get('/task', (req, res) => {
+    res.send('Task API...');
+});
+apiRoutes.get('/contacts', (req, res) => {
+    res.send('Contacts API...');
+});
+apiRoutes.get('/hours', (req, res) => {
+    res.send('Hours API...');
+});
+apiRoutes.get('/setting', (req, res) => {
+    res.send('Setting API...');
+});
 
 
 /**
  * @description Apply the routes to our application with the prefix /api
  */
 app.use('/api', apiRoutes);
-//
-// app.use((req, res, next) => {
-//     let err = new Error('Not Found');
-//     err.status = 404;
-//     next(err);
-// });
-// app.use(function(err, req, res, next) {
-//     // set locals, only providing error in development
-//     res.locals.message = err.message;
-//
-//     // render the error page
-//     res.status(err.status || 500);
-//
-//     if(err.status === 404){
-//         res.format({
-//             'text/plain': () => {
-//                 res.send({
-//                     message: 'Not Found Data'
-//                 });
-//             },
-//             'text/html': () => {
-//                 res.send("404: Sorry can't find that!");
-//             },
-//             'application/json': () => {
-//                 res.send({
-//                     message: 'Not Found Data'
-//                 });
-//             },
-//             'default': () => {
-//                 res.status(406).send('Not Acceptable');
-//             }
-//         })
-//     }
-//
-//     // when status is 500, error handler
-//     if(err.status === 500) {
-//         return res.send({
-//             message: 'Error Occur'
-//         });
-//     }
-// });
+
+app.use((req, res, next) => {
+    let err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+
+    // render the error page
+    res.status(err.status || 500);
+
+    if(err.status === 404){
+        res.format({
+            'text/plain': () => {
+                res.send({
+                    message: 'Not Found Data'
+                });
+            },
+            'text/html': () => {
+                res.send("404: Sorry can't find that!");
+            },
+            'application/json': () => {
+                res.send({
+                    message: 'Not Found Data'
+                });
+            },
+            'default': () => {
+                res.status(406).send('Not Acceptable');
+            }
+        })
+    }
+
+    // when status is 500, error handler
+    if(err.status === 500) {
+        return res.send({
+            message: 'Error Occur'
+        });
+    }
+});
 
 
 /**
