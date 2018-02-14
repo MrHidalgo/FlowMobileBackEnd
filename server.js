@@ -1,85 +1,83 @@
-﻿// =======================
-// GET THE PACKAGE WE NEED
-// =======================
-const express       = require('express');
+﻿const express       = require('express');
 const bodyParser    = require('body-parser');
-// const jwt           = require('jsonwebtoken');
+const jwt           = require('jsonwebtoken');
 
 const config        = require('./config');
+const _logger       = require('./lib/_logger');
 
 const app           = express();
 
 
-// =======================
-// Configuration
-// =======================
+/**
+ *
+ * @type {number}
+ *
+ * @description Used to create, sign, and verify tokens
+ */
 const port = process.env.PORT || config.PORT;
+
+
+/**
+ * @description Secret variable
+ */
 app.set('superSecret', config.SECRET);
 
 
-// =======================
-// Create a write stream (in append mode)
-// // =======================
-// let logDirectory = path.join(__dirname, 'log');
-//
-// fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
-//
-// let pad = (num) => {
-//     return (num > 9 ? "" : "0") + num;
-// };
-//
-// let generator = (time) => {
-//     if(!time) {
-//         return "_file.log";
-//     }
-//
-//     let month  = time.getFullYear() + "-" + pad(time.getMonth() + 1) + "-" + pad(time.getDate());
-//     let day    = pad(time.getDate());
-//     let hour   = pad(time.getHours());
-//
-//     return month + "/" + month + "-" + day + "-" + hour + "_file.log";
-// };
-//
-// let date = new Date();
-//
-// let accessLogStream = rfs(generator(date), {
-//     size:     '10M',    // rotate every 10 MegaBytes written
-//     interval: '1d',     // rotate daily
-//     compress: 'gzip',   // compress rotated files
-//     path: logDirectory
-// });
-//
-// const morganConfig = "combined";
-//
-// app.use(morgan(morganConfig, {
-//     stream: accessLogStream
-// }));
+/**
+ * @description Create a write stream (in append mode) - HTTP request logger middleware
+ * Use morgan npm to log requests to the file.
+ */
+app.use(_logger.morganLogger);
 
 
-// =======================
-// Use body parser so we can get info from POST and/or URL parameters
-// =======================
+/**
+ * @description Use body parser so we can get info from POST and/or URL parameters
+ */
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
 
 
-// =======================
-// Routes
-// =======================
+/**
+ * @description Basic route
+ */
 app.get('/', (req, res) => {
     res.send('NodeJS/Express.js server.');
 });
 
+
+/**
+ * @description get an instance of the router for api routes
+ */
 const apiRoutes     = express.Router();
 
-apiRoutes.get('/auth', (req, res) => {
-    res.send('Auth API...');
-});
 
+// apiRoutes.get('/auth', (req, res) => {
+//     res.send('Auth API...');
+// });
+// apiRoutes.get('/profile', (req, res) => {
+//     res.send('Profile API...');
+// });
+// apiRoutes.get('/task', (req, res) => {
+//     res.send('Task API...');
+// });
+// apiRoutes.get('/contacts', (req, res) => {
+//     res.send('Contacts API...');
+// });
+// apiRoutes.get('/hours', (req, res) => {
+//     res.send('Hours API...');
+// });
+// apiRoutes.get('/setting', (req, res) => {
+//     res.send('Setting API...');
+// });
+
+
+/**
+ * @description Apply the routes to our application with the prefix /api
+ */
 app.use('/api', apiRoutes);
-
+//
 // app.use((req, res, next) => {
 //     let err = new Error('Not Found');
 //     err.status = 404;
@@ -91,6 +89,7 @@ app.use('/api', apiRoutes);
 //
 //     // render the error page
 //     res.status(err.status || 500);
+//
 //     if(err.status === 404){
 //         res.format({
 //             'text/plain': () => {
@@ -120,7 +119,8 @@ app.use('/api', apiRoutes);
 //     }
 // });
 
-// =======================
-// Start the server
-// =======================
+
+/**
+ * @description Start the server
+ */
 app.listen(port);
