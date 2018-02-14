@@ -76,7 +76,7 @@ apiRoutes.get('/setting', (req, res) => {
 /**
  * @description Apply the routes to our application with the prefix /api
  */
-app.use('/api', apiRoutes);
+app.use('/', apiRoutes);
 
 app.use((req, res, next) => {
     let err = new Error('Not Found');
