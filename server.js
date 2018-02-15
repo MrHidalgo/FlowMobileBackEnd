@@ -2,8 +2,8 @@
 const bodyParser    = require('body-parser');
 // const jwt           = require('jsonwebtoken');
 
-const config        = require('./config');
-const _logger       = require('./lib/_logger');
+// const config        = require('./config');
+// const _logger       = require('./lib/_logger');
 
 const app           = express();
 
