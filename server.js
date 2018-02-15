@@ -2,7 +2,7 @@
 const bodyParser    = require('body-parser');
 // const jwt           = require('jsonwebtoken');
 
-const config        = require('config');
+// const config        = require('config');
 // const _logger       = require('./lib/_logger');
 
 const app           = express();
@@ -20,7 +20,7 @@ const port = process.env.PORT || 8080;
 /**
  * @description Secret variable
  */
-app.set('superSecret', config.SECRET);
+// app.set('superSecret', config.SECRET);
 
 
 /**
