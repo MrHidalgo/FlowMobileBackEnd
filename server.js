@@ -27,7 +27,7 @@ const port = process.env.PORT || 8080;
  * @description Create a write stream (in append mode) - HTTP request logger middleware
  * Use morgan npm to log requests to the file.
  */
-app.use(logger.morganLogger);
+// app.use(logger.morganLogger);
 
 
 /**
