@@ -33,10 +33,10 @@ const port = process.env.PORT || 8080;
 /**
  * @description Use body parser so we can get info from POST and/or URL parameters
  */
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//     extended: false
+// }));
+// app.use(bodyParser.json());
 
 
 /**
