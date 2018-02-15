@@ -3,7 +3,7 @@ const bodyParser    = require('body-parser');
 // const jwt           = require('jsonwebtoken');
 
 // const config        = require('config.js');
-const _logger       = require('./lib/_logger');
+const logger       = require('./lib/_logger/index.js');
 
 const app           = express();
 
@@ -27,7 +27,7 @@ const port = process.env.PORT || 8080;
  * @description Create a write stream (in append mode) - HTTP request logger middleware
  * Use morgan npm to log requests to the file.
  */
-app.use(_logger.morganLogger);
+app.use(logger.morganLogger);
 
 
 /**
