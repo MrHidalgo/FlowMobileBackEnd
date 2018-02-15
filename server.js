@@ -2,8 +2,8 @@
 const bodyParser    = require('body-parser');
 // const jwt           = require('jsonwebtoken');
 
-const config        = require('config.js');
-// const _logger       = require('./lib/_logger');
+// const config        = require('config.js');
+const _logger       = require('./lib/_logger');
 
 const app           = express();
 
@@ -20,14 +20,14 @@ const port = process.env.PORT || 8080;
 /**
  * @description Secret variable
  */
-app.set('superSecret', config.SECRET);
+// app.set('superSecret', config.SECRET);
 
 
 /**
  * @description Create a write stream (in append mode) - HTTP request logger middleware
  * Use morgan npm to log requests to the file.
  */
-// app.use(_logger.morganLogger);
+app.use(_logger.morganLogger);
 
 
 /**
@@ -91,51 +91,6 @@ app.use(function(err, req, res, next) {
         .status(500)
         .send('500: Something broke!');
 });
-
-//
-// app.use((req, res, next) => {
-//     let err = new Error('Not Found');
-//
-//     err.status = 404;
-//
-//     next(err);
-// });
-//
-// app.use(function(err, req, res, next) {
-//     // set locals, only providing error in development
-//     res.locals.message = err.message;
-//
-//     // render the error page
-//     res.status(err.status || 500);
-//
-//     if(err.status === 404){
-//         res.format({
-//             'text/plain': () => {
-//                 res.send({
-//                     message: 'Not Found Data'
-//                 });
-//             },
-//             'text/html': () => {
-//                 res.send("404: Sorry can't find that!");
-//             },
-//             'application/json': () => {
-//                 res.send({
-//                     message: 'Not Found Data'
-//                 });
-//             },
-//             'default': () => {
-//                 res.status(406).send('Not Acceptable');
-//             }
-//         })
-//     }
-//
-//     // when status is 500, error handler
-//     if(err.status === 500) {
-//         return res.send({
-//             message: 'Error Occur'
-//         });
-//     }
-// });
 
 
 /**
