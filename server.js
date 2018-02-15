@@ -45,43 +45,44 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
     res
         .status(200)
-        .send('NodeJS/Express.js server.');
+        .send('NodeJS/Express.js server...');
 });
 
 
 /**
  * @description get an instance of the router for api routes
  */
-const apiRoutes     = express.Router();
-
-
-apiRoutes.get('/auth', (req, res) => {
-    res.send('Auth API...');
-});
-apiRoutes.get('/profile', (req, res) => {
-    res.send('Profile API...');
-});
-apiRoutes.get('/task', (req, res) => {
-    res.send('Task API...');
-});
-apiRoutes.get('/contacts', (req, res) => {
-    res.send('Contacts API...');
-});
-apiRoutes.get('/hours', (req, res) => {
-    res.send('Hours API...');
-});
-apiRoutes.get('/setting', (req, res) => {
-    res.send('Setting API...');
-});
+// const apiRoutes     = express.Router();
+//
+//
+// apiRoutes.get('/auth', (req, res) => {
+//     res.send('Auth API...');
+// });
+// apiRoutes.get('/profile', (req, res) => {
+//     res.send('Profile API...');
+// });
+// apiRoutes.get('/task', (req, res) => {
+//     res.send('Task API...');
+// });
+// apiRoutes.get('/contacts', (req, res) => {
+//     res.send('Contacts API...');
+// });
+// apiRoutes.get('/hours', (req, res) => {
+//     res.send('Hours API...');
+// });
+// apiRoutes.get('/setting', (req, res) => {
+//     res.send('Setting API...');
+// });
 
 
 /**
  * @description Apply the routes to our application with the prefix /api
  */
-app.use('/', apiRoutes);
+// app.use('/', apiRoutes);
 
 app.use((req, res, next) => {
     let err = new Error('Not Found');
+    
     err.status = 404;
     next(err);
 });
