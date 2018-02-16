@@ -80,6 +80,10 @@ apiRoutes.get('/setting', (req, res) => {
  */
 app.use('/api', apiRoutes);
 
+
+/**
+ * @description Setup an error handler
+ */
 app.use(function(req, res, next) {
     res
         .status(404)
